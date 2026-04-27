@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <math.h>
+#include "../libft/libft.h"
 
 typedef struct s_texture
 {
@@ -47,11 +48,20 @@ typedef struct s_game
     t_player player;
 } t_game;
 
-int error_exit(char *msg);
 void init_game(t_game *game);
-char **read_file(char *filename);
+
+//error
+int error_exit(char *msg);
+
+
+// utils
+int is_empty_line(char *line);
 void free_split(char **arr);
 
-
+// parsing
+void parse_file(t_game *game, char **file);
+int parse_texture(t_game *game, char *line);
+char **read_file(char *filename);
+int	parse_color(t_game *game, char *line);
 
 #endif

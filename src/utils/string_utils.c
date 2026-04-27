@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/26 13:27:36 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/27 14:52:00 by eeravci          ###   ########.fr       */
+/*   Created: 2026/04/27 14:15:24 by eeravci           #+#    #+#             */
+/*   Updated: 2026/04/27 14:17:19 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+int is_empty_line(char *line)
 {
-	t_game	game;
-	char	**file;
+    int i;
 
-	if (argc != 2)
-		error_exit("Usage: ./cub3D map.cub");
-	init_game(&game);
-	file = read_file(argv[1]);
-	parse_file(&game, file);
-	free_split(file);
-	return (0);
+    i = 0;
+    while(line[i] == ' ' || line[i] == '\t')
+        i++;
+    return (line[i] == '\0');  
 }
+

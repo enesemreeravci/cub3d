@@ -1,42 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eeravci <enes.nev@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:43 by eeravci           #+#    #+#             */
-/*   Updated: 2024/12/29 18:20:36 by eeravci          ###   ########.fr       */
+/*   Created: 2024/12/18 10:48:04 by eeravci           #+#    #+#             */
+/*   Updated: 2025/01/04 11:22:21 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*res;
 	size_t	i;
+	size_t	q;
 
-	i = 0;
-	if (!dest && !src)
+	if (!s1 || !s2)
 		return (NULL);
-	if (dest != src)
+	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
+		res[i] = s1[i];
+		i++;
 	}
-	return (dest);
+	q = 0;
+	while (s2[q])
+	{
+		res[i + q] = s2[q];
+		q++;
+	}
+	res[i + q] = '\0';
+	return (res);
 }
 /*
 int	main(void)
 {
-	char	dest[25];
-	char	src[] = "Hello my name is Enes.";
+	char	*s1;
+	char	*s2;
+	char	*new;
 
-	printf ("Before ft_memcpy()\nsrc: %s\ndest: %s\n", src, dest);
-	ft_memcpy(dest, src, sizeof(src));
-	printf ("After ft_memcpy()\nsrc: %s\ndest: %s\n", src, dest);
+	s1 = "hello";
+	s2 = " world!";
+	new = ft_strjoin(s1, s2);
+	printf("%s\n", new);
+	free(new);
 }
 */
