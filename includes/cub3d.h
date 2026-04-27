@@ -41,7 +41,7 @@ typedef struct s_game
     void *win;
     char **map;
     int map_width;
-    int map_weight;
+    int map_height;
     t_texture tex;
     t_color floor;
     t_color ceiling;
@@ -63,5 +63,7 @@ void parse_file(t_game *game, char **file);
 int parse_texture(t_game *game, char *line);
 char **read_file(char *filename);
 int	parse_color(t_game *game, char *line);
+void parse_map(t_game *game, char **file, int start);
+void print_map(t_game *game);
 
 #endif

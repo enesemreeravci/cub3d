@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:46:27 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/27 14:51:03 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/27 16:54:34 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ void parse_file(t_game *game, char **file)
             continue;
         }
         if(is_map_line(file[i]))
+        {   
+            parse_map(game, file, i);
+           // i++;
             break;
+        }    
         error_exit("Invalid line in .cub file");
     }
     printf("NO: %s\n", game->tex.north);
@@ -49,4 +53,5 @@ void parse_file(t_game *game, char **file)
     printf("EA: %s\n", game->tex.east);
     printf("F: %d,%d,%d\n", game->floor.r, game->floor.g, game->floor.b);
 	printf("C: %d,%d,%d\n", game->ceiling.r, game->ceiling.g, game->ceiling.b);
+    print_map(game);
 }

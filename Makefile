@@ -9,6 +9,7 @@ SRC = src/main.c src/init.c src/error.c \
       src/parsing/parse_file.c \
       src/parsing/parse_texture.c \
       src/parsing/parse_color.c \
+	  src/parsing/parse_map.c \
       src/utils/free_split.c \
       src/utils/string_utils.c
 

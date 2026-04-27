@@ -6,7 +6,7 @@ void init_game(t_game *game)
     game->win = NULL;
     game->map = NULL;
     game->map_width = 0;
-    game->map_weight = 0;
+    game->map_height = 0;
     game->tex.north = NULL;
     game->tex.south = NULL;
     game->tex.west = NULL;
