@@ -6,23 +6,23 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 14:51:55 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/26 15:08:18 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 15:54:17 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void free_split(char **arr)
+void	free_split(char **arr)
 {
-    int i;
-    
-    i = 0;
-    if(!arr)
-        return;
-    while(arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-    free(arr);
+	int	i;
+
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

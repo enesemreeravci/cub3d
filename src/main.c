@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:27:36 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/27 16:56:55 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 15:54:08 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int	main(int argc, char **argv)
 	file = read_file(argv[1]);
 	parse_file(&game, file);
 	free_split(file);
+	init_mlx(&game);
+	mlx_loop(game.mlx);
 	return (0);
 }

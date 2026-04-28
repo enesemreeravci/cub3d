@@ -6,19 +6,18 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:15:24 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/27 14:17:19 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 15:54:16 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int is_empty_line(char *line)
+int	is_empty_line(char *line)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(line[i] == ' ' || line[i] == '\t')
-        i++;
-    return (line[i] == '\0');  
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	return (line[i] == '\0');
 }
-

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 15:17:41 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:10 by eeravci          ###   ########.fr       */
+/*   Created: 2026/04/28 15:09:25 by eeravci           #+#    #+#             */
+/*   Updated: 2026/04/28 15:54:12 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_game(t_game *game)
+void	init_mlx(t_game *game)
 {
-	game->mlx = NULL;
-	game->win = NULL;
-	game->map = NULL;
-	game->map_width = 0;
-	game->map_height = 0;
-	game->tex.north = NULL;
-	game->tex.south = NULL;
-	game->tex.west = NULL;
-	game->tex.east = NULL;
-	game->floor.set = 0;
-	game->ceiling.set = 0;
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		error_exit("mlx_init failed");
+
+	game->win = mlx_new_window(game->mlx, 800, 600, "cub3D");
+	if (!game->win)
+		error_exit("mlx_new_window failed");
 }

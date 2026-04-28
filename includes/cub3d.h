@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include "../libft/libft.h"
+#include "../minilibx-linux/mlx.h"
 
 typedef struct s_texture
 {
@@ -35,6 +36,15 @@ typedef struct s_player
     double plane_y;
 } t_player;
 
+typedef struct s_img
+{
+    void *img;
+    char *addr;
+    int bits_per_pixel;
+    int line_length;
+    int endian;
+} t_img;
+
 typedef struct s_game
 {
     void *mlx;
@@ -46,7 +56,9 @@ typedef struct s_game
     t_color floor;
     t_color ceiling;
     t_player player;
+    t_img img;
 } t_game;
+
 
 void init_game(t_game *game);
 
@@ -65,5 +77,13 @@ char **read_file(char *filename);
 int	parse_color(t_game *game, char *line);
 void parse_map(t_game *game, char **file, int start);
 void print_map(t_game *game);
+void validate_map(t_game *game);
+
+// parsing/validate_map2.c
+char get_cell(t_game *game, int x, int y);
+void check_closed_cell(t_game *game, int x, int y);
+
+//rendering
+void init_mlx(t_game *game);
 
 #endif

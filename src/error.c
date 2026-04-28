@@ -6,14 +6,14 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:53:48 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/26 14:53:35 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 15:54:14 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int error_exit(char *msg)
+int	error_exit(char *msg)
 {
-    printf("Error\n%s\n", msg);
-    exit(1);
+	printf("Error\n%s\n", msg);
+	exit(1);
 }
