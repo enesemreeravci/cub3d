@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:46:27 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:24 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 16:23:41 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	is_map_line(char *line)
 
 void	parse_file(t_game *game, char **file)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (file[i])

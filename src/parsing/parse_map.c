@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:32:00 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:26 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 16:24:13 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	parse_map(t_game *game, char **file, int start)
 	}
 	game->map[i] = NULL;
 }
+
 void	print_map(t_game *game)
 {
 	int	i;

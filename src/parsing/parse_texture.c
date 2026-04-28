@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:18:18 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:28 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 16:23:23 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	set_texture(char **target, char *path)
 
 int	parse_texture(t_game *game, char *line)
 {
-	char *path;
+	char	*path;
 
 	line = skip_spaces(line);
 	if (!ft_strncmp(line, "NO ", 3))
