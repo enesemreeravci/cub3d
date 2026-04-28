@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:04:43 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:19 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/04/28 16:07:26 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	init_image(t_game *game)
 {
-	game->img.img =
+	//game->img.img =
 }
