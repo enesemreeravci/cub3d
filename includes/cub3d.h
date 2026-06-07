@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:22:15 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/07 15:39:29 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/07 17:57:27 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 typedef struct s_texture
 {
@@ -70,6 +73,25 @@ typedef struct s_game
 	t_img		img;
 }				t_game;
 
+typedef struct s_ray
+{
+	double camera_x;
+	double ray_dir_x;
+	double ray_dir_y;
+	int map_x;
+	int map_y;
+	double side_dist_x;
+	double side_dist_y;
+	double delta_dist_x;
+	double delta_dist_y;
+	double perp_wall_dist;
+	int step_x;
+	int step_y;
+	int hit;
+	int side;
+} t_ray;
+
+
 void			init_game(t_game *game);
 
 // error
@@ -103,5 +125,14 @@ void			put_pixel(t_game *game, int x, int y, int color);
 // rendering/draw.c
 void draw_vertical_line(t_game *game, int x, int start_y, int end_y);
 void render_test_lines(t_game *game);
+
+//rendering/background.c
+void render_background(t_game *game);
+int rgb_to_int(int r, int g, int b);
+
+void	render_fake_walls(t_game *game);
+void render_raycast(t_game *game);
+void init_ray(t_game *game, t_ray *ray, int x);
+void perform_dda(t_game *game, t_ray *ray);
 
 #endif

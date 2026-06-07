@@ -21,8 +21,10 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/utils/string_utils.c \
       src/utils/cleanup.c \
       src/rendering/image.c \
-      src/rendering/draw.c
-      
+      src/rendering/draw.c \
+      src/rendering/background.c \
+      src/rendering/fake_walls.c \
+      src/rendering/raycast.c
 
 OBJ = $(SRC:.c=.o)
 
