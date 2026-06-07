@@ -1,15 +1,18 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR) -I./includes -I./minilibx-linux
+CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR) -I./includes -I$(MLX_DIR)
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-MLX_DIR = ./minilibx-linux
+MLX_DIR = ../../so_long/minilibx-linux
 MLX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
+SRC = src/main.c \
+      src/init.c \
+      src/init_mlx.c \
+      src/error.c \
       src/parsing/read_file.c \
       src/parsing/parse_file.c \
       src/parsing/parse_texture.c \
@@ -18,8 +21,14 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/parsing/validate_map.c \
       src/parsing/validate_map2.c \
       src/utils/free_split.c \
-      src/utils/string_utils.c 
-      
+      src/utils/string_utils.c \
+      src/rendering/image.c \
+      src/rendering/texture.c \
+      src/rendering/raycasting.c \
+      src/rendering/draw.c \
+      src/rendering/render.c \
+      src/input/keys.c \
+      src/input/movement.c
 
 OBJ = $(SRC:.c=.o)
 

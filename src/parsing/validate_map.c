@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:16:05 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 16:23:18 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/07 14:03:11 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ static void	set_player_direction(t_game *game, char c)
 		game->player.dir_x = 1;
 		game->player.dir_y = 0;
 		game->player.plane_x = 0;
-		game->player.plane_x = 0.66;
+		game->player.plane_y = 0.66;
 	}
 	else if (c == 'W')
 	{
 		game->player.dir_x = -1;
 		game->player.dir_y = 0;
 		game->player.plane_x = 0;
-		game->player.plane_y = 0.66;
+		game->player.plane_y = -0.66;
 	}
 }
 

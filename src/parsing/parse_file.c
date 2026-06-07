@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:46:27 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 16:23:41 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/07 14:03:11 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ static int	is_map_line(char *line)
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	return (line[i] == '1' || line[i] == '0');
+}
+
+static void	validate_fields(t_game *game)
+{
+	if (!game->tex.north || !game->tex.south
+		|| !game->tex.west || !game->tex.east)
+		error_exit("Missing texture identifier(s)");
+	if (!game->floor.set || !game->ceiling.set)
+		error_exit("Missing floor or ceiling color");
 }
 
 void	parse_file(t_game *game, char **file)
@@ -42,19 +51,11 @@ void	parse_file(t_game *game, char **file)
 		if (is_map_line(file[i]))
 		{
 			parse_map(game, file, i);
+			validate_fields(game);
 			validate_map(game);
-			break ;
+			return ;
 		}
 		error_exit("Invalid line in .cub file");
 	}
-	printf("NO: %s\n", game->tex.north);
-	printf("SO: %s\n", game->tex.south);
-	printf("WE: %s\n", game->tex.west);
-	printf("EA: %s\n", game->tex.east);
-	printf("F: %d,%d,%d\n", game->floor.r, game->floor.g, game->floor.b);
-	printf("C: %d,%d,%d\n", game->ceiling.r, game->ceiling.g, game->ceiling.b);
-	printf("Player position: x=%f y=%f\n", game->player.x, game->player.y);
-	printf("Player direction: x=%f y=%f\n", game->player.dir_x,
-		game->player.dir_y);
-	print_map(game);
+	error_exit("No map found in .cub file");
 }

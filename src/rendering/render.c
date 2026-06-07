@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 15:04:43 by eeravci           #+#    #+#             */
+/*   Created: 2026/06/07 14:03:11 by mafzal           #+#    #+#             */
 /*   Updated: 2026/06/07 14:03:11 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	img_pixel_put(t_img *img, int x, int y, int color)
+int	render_frame(t_game *game)
 {
-	char	*dst;
+	t_ray	ray;
+	int		x;
 
-	if (x < 0 || x >= WIN_W || y < 0 || y >= WIN_H)
-		return ;
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	handle_movement(game);
+	x = 0;
+	while (x < WIN_W)
+	{
+		cast_ray(game, &ray, x);
+		draw_column(game, &ray, x);
+		x++;
+	}
+	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	return (0);
 }
