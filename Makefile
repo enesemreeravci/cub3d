@@ -18,7 +18,10 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/parsing/validate_map.c \
       src/parsing/validate_map2.c \
       src/utils/free_split.c \
-      src/utils/string_utils.c 
+      src/utils/string_utils.c \
+      src/utils/cleanup.c \
+      src/rendering/image.c \
+      src/rendering/draw.c
       
 
 OBJ = $(SRC:.c=.o)
