@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:22:15 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/07 17:57:27 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/08 17:35:22 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,30 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+# define TEX_NO 0
+# define TEX_SO 1
+# define TEX_WE 2
+# define TEX_EA 3
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+	
+}	t_keys;
 typedef struct s_texture
 {
 	char		*north;
@@ -59,6 +82,17 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
+typedef struct s_tex_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_tex_img;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -71,6 +105,8 @@ typedef struct s_game
 	t_color		ceiling;
 	t_player	player;
 	t_img		img;
+	t_tex_img	wall_tex[4];
+	t_keys	keys;
 }				t_game;
 
 typedef struct s_ray
@@ -92,6 +128,7 @@ typedef struct s_ray
 } t_ray;
 
 
+
 void			init_game(t_game *game);
 
 // error
@@ -110,6 +147,7 @@ int				parse_color(t_game *game, char *line);
 void			parse_map(t_game *game, char **file, int start);
 void			print_map(t_game *game);
 void			validate_map(t_game *game);
+void	check_extension(char *filename);
 
 // parsing/validate_map2.c
 char			get_cell(t_game *game, int x, int y);
@@ -130,9 +168,28 @@ void render_test_lines(t_game *game);
 void render_background(t_game *game);
 int rgb_to_int(int r, int g, int b);
 
+//rendering raycast
 void	render_fake_walls(t_game *game);
 void render_raycast(t_game *game);
 void init_ray(t_game *game, t_ray *ray, int x);
 void perform_dda(t_game *game, t_ray *ray);
+void render_frame(t_game *game);
+
+// player 
+int 	handle_key(int keycode, t_game *game);
+void	move_forward(t_game *game);
+void	move_backward(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
+void	load_textures(t_game *game);
+int	key_press(int keycode, t_game *game);
+int	key_release(int keycode, t_game *game);
+int	game_loop(t_game *game);
+
+int		get_texture_index(t_ray *ray);
+int		get_texture_pixel(t_tex_img *tex, int x, int y);
+void	draw_textured_wall(t_game *game, t_ray *ray, int x);
 
 #endif

@@ -86,19 +86,13 @@ void	render_raycast(t_game *game)
 {
 	int		x;
 	t_ray	ray;
-	int		line_height;
-	int		start_y;
-	int		end_y;
 
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
 		init_ray(game, &ray, x);
 		perform_dda(game, &ray);
-		line_height = (int)(WIN_HEIGHT / ray.perp_wall_dist);
-		start_y = (WIN_HEIGHT - line_height) / 2;
-		end_y = (WIN_HEIGHT + line_height) / 2;
-		draw_vertical_line(game, x, start_y, end_y);
+		draw_textured_wall(game, &ray, x);
 		x++;
 	}
 }

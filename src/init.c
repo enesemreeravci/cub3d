@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:17:41 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 15:54:10 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/08 17:23:15 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ void	init_game(t_game *game)
 	game->tex.east = NULL;
 	game->floor.set = 0;
 	game->ceiling.set = 0;
+	game->keys.w = 0;
+	game->keys.a = 0;
+	game->keys.s = 0;
+	game->keys.d = 0;
+	game->keys.left = 0;
+	game->keys.right = 0;
 }

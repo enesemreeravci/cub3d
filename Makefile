@@ -17,6 +17,7 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/parsing/parse_map.c \
       src/parsing/validate_map.c \
       src/parsing/validate_map2.c \
+      src/parsing/check_extension.c \
       src/utils/free_split.c \
       src/utils/string_utils.c \
       src/utils/cleanup.c \
@@ -24,7 +25,13 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/rendering/draw.c \
       src/rendering/background.c \
       src/rendering/fake_walls.c \
-      src/rendering/raycast.c
+      src/rendering/raycast.c \
+      src/rendering/render_frame.c \
+      src/rendering/textures.c \
+      src/rendering/texture_draw.c \
+      src/player/input.c \
+      src/player/movement.c \
+      src/player/rotation.c 
 
 OBJ = $(SRC:.c=.o)
 

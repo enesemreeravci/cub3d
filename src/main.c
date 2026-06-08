@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:27:36 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/07 18:55:00 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/08 17:55:59 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		error_exit("Usage: ./cub3D map.cub");
+	check_extension(argv[1]);
 	init_game(&game);
 	file = read_file(argv[1]);
 	parse_file(&game, file);
 	free_split(file);
 	init_mlx(&game);
 	init_image(&game);
-	render_background(&game);
-	render_raycast(&game);
-	put_pixel(&game, 400, 300, 0x00FF0000);
-	mlx_put_image_to_window(game.mlx, game.win, game.img.img, 0, 0);
+	load_textures(&game);
+	render_frame(&game);
+	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
+	mlx_hook(game.win, 3, 1L << 1, key_release, &game);
+	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	return (0);
