@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:18:18 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 16:23:23 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 16:29:24 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static char	*skip_spaces(char *line)
 	return (line);
 }
 
-static void	set_texture(char **target, char *path)
+static void	set_texture(t_game *game, char **target, char *path)
 {
 	if (*target)
-		error_exit("Duplicate texture identifier");
+		error_exit_game(game, "Duplicate texture identifier");
 	*target = ft_strdup(path);
 }
 
@@ -34,28 +34,26 @@ int	parse_texture(t_game *game, char *line)
 	if (!ft_strncmp(line, "NO ", 3))
 	{
 		path = skip_spaces(line + 2);
-		set_texture(&game->tex.north, path);
+		set_texture(game, &game->tex.north, path);
 		return (1);
 	}
 	if (!ft_strncmp(line, "SO ", 3))
 	{
 		path = skip_spaces(line + 2);
-		set_texture(&game->tex.south, path);
+		set_texture(game, &game->tex.south, path);
 		return (1);
 	}
 	if (!ft_strncmp(line, "WE ", 3))
 	{
 		path = skip_spaces(line + 2);
-		set_texture(&game->tex.west, path);
+		set_texture(game, &game->tex.west, path);
 		return (1);
 	}
 	if (!ft_strncmp(line, "EA ", 3))
 	{
 		path = skip_spaces(line + 2);
-		{
-			set_texture(&game->tex.east, path);
-			return (1);
-		}
+		set_texture(game, &game->tex.east, path);
+		return (1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:04:43 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/07 15:20:26 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 16:28:05 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_image(t_game *game)
 {
     game->img.img = mlx_new_image(game->mlx, 800, 800);
     if(!game->img.img)
-        error_exit("mlx_new_image failed");
+        error_exit_game(game, "mlx_new_image failed");
     game->img.addr = mlx_get_data_addr(game->img.img,
     &game->img.bits_per_pixel,
     &game->img.line_length,

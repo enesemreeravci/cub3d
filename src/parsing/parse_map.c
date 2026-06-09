@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:32:00 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 16:24:13 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 15:55:58 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ static int	line_len(char *line)
 		i++;
 	return (i);
 }
+/*
+Checks that no map content exists after an empty line.
+Once the map is interrupted by an empty line, only empty lines are allowed.
+*/
+
 
 void	parse_map(t_game *game, char **file, int start)
 {
@@ -43,10 +48,10 @@ void	parse_map(t_game *game, char **file, int start)
 
 	height = map_height(file, start);
 	if (height <= 0)
-		error_exit("Missing map");
+		error_exit_game(game, "Missing map");
 	game->map = malloc(sizeof(char *) * (height + 1));
 	if (!game->map)
-		error_exit("Malloc failed");
+		error_exit_game(game, "Malloc failed");
 	game->map_height = height;
 	game->map_width = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:16:05 by eeravci           #+#    #+#             */
-/*   Updated: 2026/04/28 16:23:18 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 16:27:29 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	validate_map(t_game *game)
 		while (game->map[y][x])
 		{
 			if (!is_valid_map_char(game->map[y][x]))
-				error_exit("Invalid character in map");
+				error_exit_game(game, "Invalid character in map");
 			if (is_player(game->map[y][x]))
 				handle_player(game, x, y, &player_count);
 			check_closed_cell(game, x, y);
@@ -86,5 +86,5 @@ void	validate_map(t_game *game)
 		y++;
 	}
 	if (player_count != 1)
-		error_exit("Map must contain exactly one player");
+		error_exit_game(game, "Map must contain exactly one player");
 }

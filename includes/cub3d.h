@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:22:15 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/08 17:35:22 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 16:10:32 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	char		**map;
+	char		**file;
 	int			map_width;
 	int			map_height;
 	t_texture	tex;
@@ -133,12 +134,13 @@ void			init_game(t_game *game);
 
 // error
 int				error_exit(char *msg);
-
+int	error_exit_game(t_game *game, char *msg);
 // utils
 int				is_empty_line(char *line);
 void			free_split(char **arr);
 void free_game(t_game *game);
 int close_game(t_game *game);
+void	cleanup_game(t_game *game);
 // parsing
 void			parse_file(t_game *game, char **file);
 int				parse_texture(t_game *game, char *line);
@@ -155,7 +157,7 @@ void			check_closed_cell(t_game *game, int x, int y);
 
 // init_mlx
 void			init_mlx(t_game *game);
-
+void	init_window(t_game *game);
 // rendering/image.c
 void			init_image(t_game *game);
 void			put_pixel(t_game *game, int x, int y, int color);

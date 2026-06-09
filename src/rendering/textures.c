@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:29:10 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/08 15:31:26 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/09 15:46:07 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static void	load_one_texture(t_game *game, t_tex_img *tex, char *path)
 	tex->img = mlx_xpm_file_to_image(game->mlx, path,
 			&tex->width, &tex->height);
 	if (!tex->img)
-		error_exit("Failed to load texture");
+		error_exit_game(game, "Failed to load texture");
 	tex->addr = mlx_get_data_addr(tex->img,
 			&tex->bits_per_pixel,
 			&tex->line_length,
 			&tex->endian);
 	if (!tex->addr)
-		error_exit("Failed to get texture address");
+		error_exit_game(game, "Failed to get texture address");
 }
 
 
