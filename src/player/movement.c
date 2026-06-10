@@ -6,13 +6,13 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:22:02 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 14:00:20 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 18:08:10 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-#define MOVE_SPEED 0.003
+#define MOVE_SPEED 0.03
 #define COLLISION_BUFFER 0.20
 
 // Checks whether a position is walkable with a small wall buffer.
@@ -20,13 +20,13 @@
 // getting too close to walls or clipping into corners.
 static int	can_move_to(t_game *game, double x, double y)
 {
-	if (game->map[(int)(y - COLLISION_BUFFER)][(int)x] == '1')
+	if (get_cell(game, (int)x, (int)(y - COLLISION_BUFFER)) != '0')
 		return (0);
-	if (game->map[(int)(y + COLLISION_BUFFER)][(int)x] == '1')
+	if (get_cell(game, (int)x, (int)(y + COLLISION_BUFFER)) != '0')
 		return (0);
-	if (game->map[(int)y][(int)(x - COLLISION_BUFFER)] == '1')
+	if (get_cell(game, (int)(x - COLLISION_BUFFER), (int)y) != '0')
 		return (0);
-	if (game->map[(int)y][(int)(x + COLLISION_BUFFER)] == '1')
+	if (get_cell(game, (int)(x + COLLISION_BUFFER), (int)y) != '0')
 		return (0);
 	return (1);
 }
