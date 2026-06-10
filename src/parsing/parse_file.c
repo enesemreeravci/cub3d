@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:46:27 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 16:03:07 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:07:06 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ static void	validate_map_end(t_game *game, char **file, int start)
 	}
 }
 
-//Checks whether every required .cub element was parsed.
-//The project needs four textures, one floor color, one ceiling color, and one map.
+// Checks whether every required .cub element was parsed.
+// The project needs four textures,
+// one floor color, one ceiling color, and one map.
 
 static void	check_required_elements(t_game *game)
 {
-	if (!game->tex.north || !game->tex.south || !game->tex.west || !game->tex.east)
+	if (!game->tex.north || !game->tex.south || !game->tex.west
+		|| !game->tex.east)
 		error_exit_game(game, "Missing texture path");
 	if (!game->floor.set)
 		error_exit_game(game, "Missing floor color");

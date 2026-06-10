@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:53:48 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 15:43:51 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:08:34 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	error_exit(char *msg)
 	printf("Error\n%s\n", msg);
 	exit(1);
 }
+
 int	error_exit_game(t_game *game, char *msg)
 {
 	if (game)

@@ -1,16 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/10 14:01:38 by eeravci           #+#    #+#             */
+/*   Updated: 2026/06/10 14:02:26 by eeravci          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-
-//initializes ray values for one screen column.
-//each column has its own ray direction based on player direction and camera plane.
+// initializes ray values for one screen column.
+// each column has its own ray
+// direction based on player direction and camera plane.
 
 void	init_ray(t_game *game, t_ray *ray, int x)
 {
 	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	ray->ray_dir_x = game->player.dir_x
-		+ game->player.plane_x * ray->camera_x;
-	ray->ray_dir_y = game->player.dir_y
-		+ game->player.plane_y * ray->camera_x;
+	ray->ray_dir_x = game->player.dir_x + game->player.plane_x * ray->camera_x;
+	ray->ray_dir_y = game->player.dir_y + game->player.plane_y * ray->camera_x;
 	ray->map_x = (int)game->player.x;
 	ray->map_y = (int)game->player.y;
 	if (ray->ray_dir_x == 0)
@@ -23,15 +33,15 @@ void	init_ray(t_game *game, t_ray *ray, int x)
 		ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
 }
-//Chooses ray step direction and initial side distances.
-//This prepares the ray to move through the map grid using DDA.
+
+// Chooses ray step direction and initial side distances.
+// This prepares the ray to move through the map grid using DDA.
 static void	init_ray_steps(t_game *game, t_ray *ray)
 {
 	if (ray->ray_dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->side_dist_x = (game->player.x - ray->map_x)
-			* ray->delta_dist_x;
+		ray->side_dist_x = (game->player.x - ray->map_x) * ray->delta_dist_x;
 	}
 	else
 	{
@@ -42,8 +52,7 @@ static void	init_ray_steps(t_game *game, t_ray *ray)
 	if (ray->ray_dir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->side_dist_y = (game->player.y - ray->map_y)
-			* ray->delta_dist_y;
+		ray->side_dist_y = (game->player.y - ray->map_y) * ray->delta_dist_y;
 	}
 	else
 	{
@@ -52,8 +61,10 @@ static void	init_ray_steps(t_game *game, t_ray *ray)
 			* ray->delta_dist_y;
 	}
 }
-//Runs the DDA algorithm until the ray hits a wall.
-//DDA moves from grid cell to grid cell efficiently instead of checking every pixel.
+
+// Runs the DDA algorithm until the ray hits a wall.
+// DDA moves from grid cell to grid
+// cell efficiently instead of checking every pixel.
 void	perform_dda(t_game *game, t_ray *ray)
 {
 	init_ray_steps(game, ray);
@@ -80,8 +91,8 @@ void	perform_dda(t_game *game, t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
 }
 
-//Casts one ray for each screen column and draws a wall slice.
-//This is the first real 3D render using the map and player direction.
+// Casts one ray for each screen column and draws a wall slice.
+// This is the first real 3D render using the map and player direction.
 void	render_raycast(t_game *game)
 {
 	int		x;

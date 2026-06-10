@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:32:24 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 15:50:31 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:07:21 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	check_closed_cell(t_game *game, int x, int y)
 {
 	if (get_cell(game, x, y) != '0')
 		return ;
-	if (get_cell(game, x + 1, y) == ' '
-		|| get_cell(game, x - 1, y) == ' '
-		|| get_cell(game, x, y + 1) == ' '
-		|| get_cell(game, x, y - 1) == ' ')
+	if (get_cell(game, x + 1, y) == ' ' || get_cell(game, x - 1, y) == ' '
+		|| get_cell(game, x, y + 1) == ' ' || get_cell(game, x, y - 1) == ' ')
 		error_exit_game(game, "Map is not closed by walls");
 }

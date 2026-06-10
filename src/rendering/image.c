@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:04:43 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 16:28:05 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:02:35 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,20 @@
 
 void	init_image(t_game *game)
 {
-    game->img.img = mlx_new_image(game->mlx, 800, 800);
-    if(!game->img.img)
-        error_exit_game(game, "mlx_new_image failed");
-    game->img.addr = mlx_get_data_addr(game->img.img,
-    &game->img.bits_per_pixel,
-    &game->img.line_length,
-    &game->img.endian);
+	game->img.img = mlx_new_image(game->mlx, 800, 800);
+	if (!game->img.img)
+		error_exit_game(game, "mlx_new_image failed");
+	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel,
+			&game->img.line_length, &game->img.endian);
 }
 
-void put_pixel(t_game *game, int x, int y, int color)
+void	put_pixel(t_game *game, int x, int y, int color)
 {
-    char *dst;
+	char	*dst;
 
-    if(x < 0 || x >= 800 || y < 0 || y >= 600)
-        return;
-    dst = game->img.addr + (y * game->img.line_length)
-        + x * (game->img.bits_per_pixel / 8);
-    *(unsigned int *)dst = color;
+	if (x < 0 || x >= 800 || y < 0 || y >= 600)
+		return ;
+	dst = game->img.addr + (y * game->img.line_length) + x
+		* (game->img.bits_per_pixel / 8);
+	*(unsigned int *)dst = color;
 }

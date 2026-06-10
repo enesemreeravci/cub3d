@@ -6,14 +6,14 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 17:35:03 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/08 17:55:33 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:10:31 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-//Checks whether the input file ends with the .cub extension.
-//The subject requires the scene description file to use this format.
+// Checks whether the input file ends with the .cub extension.
+// The subject requires the scene description file to use this format.
 
 void	check_extension(char *filename)
 {
@@ -24,9 +24,7 @@ void	check_extension(char *filename)
 		i++;
 	if (i < 5)
 		error_exit("Invalid file extension");
-	if (filename[i - 4] != '.'
-		|| filename[i - 3] != 'c'
-		|| filename[i - 2] != 'u'
-		|| filename[i - 1] != 'b')
+	if (filename[i - 4] != '.' || filename[i - 3] != 'c' || filename[i
+			- 2] != 'u' || filename[i - 1] != 'b')
 		error_exit("Invalid file extension");
 }

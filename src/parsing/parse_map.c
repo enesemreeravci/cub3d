@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:32:00 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 15:55:58 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:07:11 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	line_len(char *line)
 Checks that no map content exists after an empty line.
 Once the map is interrupted by an empty line, only empty lines are allowed.
 */
-
 
 void	parse_map(t_game *game, char **file, int start)
 {

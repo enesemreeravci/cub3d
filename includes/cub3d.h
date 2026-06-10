@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:22:15 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/09 16:10:32 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/10 14:06:03 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@
 
 typedef struct s_keys
 {
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int	left;
-	int	right;
-	
-}	t_keys;
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			left;
+	int			right;
+
+}				t_keys;
 typedef struct s_texture
 {
 	char		*north;
@@ -84,14 +84,14 @@ typedef struct s_img
 
 typedef struct s_tex_img
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		width;
-	int		height;
-}	t_tex_img;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+}				t_tex_img;
 
 typedef struct s_game
 {
@@ -107,40 +107,38 @@ typedef struct s_game
 	t_player	player;
 	t_img		img;
 	t_tex_img	wall_tex[4];
-	t_keys	keys;
+	t_keys		keys;
 }				t_game;
 
 typedef struct s_ray
 {
-	double camera_x;
-	double ray_dir_x;
-	double ray_dir_y;
-	int map_x;
-	int map_y;
-	double side_dist_x;
-	double side_dist_y;
-	double delta_dist_x;
-	double delta_dist_y;
-	double perp_wall_dist;
-	int step_x;
-	int step_y;
-	int hit;
-	int side;
-} t_ray;
-
-
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+}				t_ray;
 
 void			init_game(t_game *game);
 
 // error
 int				error_exit(char *msg);
-int	error_exit_game(t_game *game, char *msg);
+int				error_exit_game(t_game *game, char *msg);
 // utils
 int				is_empty_line(char *line);
 void			free_split(char **arr);
-void free_game(t_game *game);
-int close_game(t_game *game);
-void	cleanup_game(t_game *game);
+void			free_game(t_game *game);
+int				close_game(t_game *game);
+void			cleanup_game(t_game *game);
 // parsing
 void			parse_file(t_game *game, char **file);
 int				parse_texture(t_game *game, char *line);
@@ -149,7 +147,7 @@ int				parse_color(t_game *game, char *line);
 void			parse_map(t_game *game, char **file, int start);
 void			print_map(t_game *game);
 void			validate_map(t_game *game);
-void	check_extension(char *filename);
+void			check_extension(char *filename);
 
 // parsing/validate_map2.c
 char			get_cell(t_game *game, int x, int y);
@@ -157,41 +155,41 @@ void			check_closed_cell(t_game *game, int x, int y);
 
 // init_mlx
 void			init_mlx(t_game *game);
-void	init_window(t_game *game);
+void			init_window(t_game *game);
 // rendering/image.c
 void			init_image(t_game *game);
 void			put_pixel(t_game *game, int x, int y, int color);
 
 // rendering/draw.c
-void draw_vertical_line(t_game *game, int x, int start_y, int end_y);
-void render_test_lines(t_game *game);
+void			draw_vertical_line(t_game *game, int x, int start_y, int end_y);
+void			render_test_lines(t_game *game);
 
-//rendering/background.c
-void render_background(t_game *game);
-int rgb_to_int(int r, int g, int b);
+// rendering/background.c
+void			render_background(t_game *game);
+int				rgb_to_int(int r, int g, int b);
 
-//rendering raycast
-void	render_fake_walls(t_game *game);
-void render_raycast(t_game *game);
-void init_ray(t_game *game, t_ray *ray, int x);
-void perform_dda(t_game *game, t_ray *ray);
-void render_frame(t_game *game);
+// rendering raycast
+void			render_fake_walls(t_game *game);
+void			render_raycast(t_game *game);
+void			init_ray(t_game *game, t_ray *ray, int x);
+void			perform_dda(t_game *game, t_ray *ray);
+void			render_frame(t_game *game);
 
-// player 
-int 	handle_key(int keycode, t_game *game);
-void	move_forward(t_game *game);
-void	move_backward(t_game *game);
-void	move_left(t_game *game);
-void	move_right(t_game *game);
-void	rotate_left(t_game *game);
-void	rotate_right(t_game *game);
-void	load_textures(t_game *game);
-int	key_press(int keycode, t_game *game);
-int	key_release(int keycode, t_game *game);
-int	game_loop(t_game *game);
+// player
+int				handle_key(int keycode, t_game *game);
+void			move_forward(t_game *game);
+void			move_backward(t_game *game);
+void			move_left(t_game *game);
+void			move_right(t_game *game);
+void			rotate_left(t_game *game);
+void			rotate_right(t_game *game);
+void			load_textures(t_game *game);
+int				key_press(int keycode, t_game *game);
+int				key_release(int keycode, t_game *game);
+int				game_loop(t_game *game);
 
-int		get_texture_index(t_ray *ray);
-int		get_texture_pixel(t_tex_img *tex, int x, int y);
-void	draw_textured_wall(t_game *game, t_ray *ray, int x);
+int				get_texture_index(t_ray *ray);
+int				get_texture_pixel(t_tex_img *tex, int x, int y);
+void			draw_textured_wall(t_game *game, t_ray *ray, int x);
 
 #endif
