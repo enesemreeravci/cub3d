@@ -1,7 +1,7 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR) -I./includes -I./minilibx-linux
+CFLAGS = -Wall -Wextra -Werror -g3 -I$(LIBFT_DIR) -I./includes -I./minilibx-linux
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -18,6 +18,7 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/parsing/validate_map.c \
       src/parsing/validate_map2.c \
       src/parsing/check_extension.c \
+      src/parsing/player_direction.c \
       src/utils/free_split.c \
       src/utils/string_utils.c \
       src/utils/cleanup.c \
@@ -29,6 +30,7 @@ SRC = src/main.c src/init.c src/init_mlx.c src/error.c \
       src/rendering/render_frame.c \
       src/rendering/textures.c \
       src/rendering/texture_draw.c \
+      src/rendering/texture_draw_2.c \
       src/player/input.c \
       src/player/movement.c \
       src/player/rotation.c 

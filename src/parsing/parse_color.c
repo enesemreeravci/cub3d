@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:36:39 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 18:01:36 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:05:41 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*skip_spaces(char *line)
 		line++;
 	return (line);
 }
+
 static int	ft_atoi_simple(t_game *game, char **str)
 {
 	int	num;

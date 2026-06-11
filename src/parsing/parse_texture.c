@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 14:18:18 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 14:07:14 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:07:29 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,30 @@ static void	set_texture(t_game *game, char **target, char *path)
 	*target = ft_strdup(path);
 }
 
-int	parse_texture(t_game *game, char *line)
+static int	parse_texture_line(t_game *game, char *line, char *id,
+		char **target)
 {
 	char	*path;
 
+	if (!ft_strncmp(line, id, 3))
+	{
+		path = skip_spaces(line + 2);
+		set_texture(game, target, path);
+		return (1);
+	}
+	return (0);
+}
+
+int	parse_texture(t_game *game, char *line)
+{
 	line = skip_spaces(line);
-	if (!ft_strncmp(line, "NO ", 3))
-	{
-		path = skip_spaces(line + 2);
-		set_texture(game, &game->tex.north, path);
+	if (parse_texture_line(game, line, "NO ", &game->tex.north))
 		return (1);
-	}
-	if (!ft_strncmp(line, "SO ", 3))
-	{
-		path = skip_spaces(line + 2);
-		set_texture(game, &game->tex.south, path);
+	if (parse_texture_line(game, line, "SO ", &game->tex.south))
 		return (1);
-	}
-	if (!ft_strncmp(line, "WE ", 3))
-	{
-		path = skip_spaces(line + 2);
-		set_texture(game, &game->tex.west, path);
+	if (parse_texture_line(game, line, "WE ", &game->tex.west))
 		return (1);
-	}
-	if (!ft_strncmp(line, "EA ", 3))
-	{
-		path = skip_spaces(line + 2);
-		set_texture(game, &game->tex.east, path);
+	if (parse_texture_line(game, line, "EA ", &game->tex.east))
 		return (1);
-	}
 	return (0);
 }

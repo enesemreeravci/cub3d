@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:22:15 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 14:06:03 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:11:04 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,6 @@ typedef struct s_player
 	double		plane_y;
 }				t_player;
 
-typedef struct s_img
-{
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_img;
-
 typedef struct s_tex_img
 {
 	void		*img;
@@ -92,6 +83,27 @@ typedef struct s_tex_img
 	int			width;
 	int			height;
 }				t_tex_img;
+
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_img;
+
+typedef struct s_tex_draw
+{
+	t_tex_img	*tex;
+	double		wall_x;
+	double		step;
+	double		tex_pos;
+	int			line_height;
+	int			start_y;
+	int			end_y;
+	int			tex_x;
+}				t_tex_draw;
 
 typedef struct s_game
 {
@@ -148,6 +160,9 @@ void			parse_map(t_game *game, char **file, int start);
 void			print_map(t_game *game);
 void			validate_map(t_game *game);
 void			check_extension(char *filename);
+int				is_player(char c);
+void			handle_player(t_game *game, int x, int y, int *count);
+void			set_player_direction(t_game *game, char c);
 
 // parsing/validate_map2.c
 char			get_cell(t_game *game, int x, int y);

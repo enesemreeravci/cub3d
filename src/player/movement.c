@@ -6,13 +6,13 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 14:22:02 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 18:08:10 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/11 13:51:07 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-#define MOVE_SPEED 0.03
+#define MOVE_SPEED 0.003
 #define COLLISION_BUFFER 0.20
 
 // Checks whether a position is walkable with a small wall buffer.

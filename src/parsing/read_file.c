@@ -6,7 +6,7 @@
 /*   By: eeravci <eeravci@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 14:53:57 by eeravci           #+#    #+#             */
-/*   Updated: 2026/06/10 14:07:17 by eeravci          ###   ########.fr       */
+/*   Updated: 2026/06/11 14:06:34 by eeravci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ static int	count_lines(char *filename)
 	return (count + 1);
 }
 
+static char	*finish_line(char *line, int read_bytes, int i)
+{
+	line[i] = '\0';
+	if (read_bytes == 0 && i == 0)
+	{
+		free(line);
+		return (NULL);
+	}
+	return (line);
+}
+
 static char	*read_line_fd(int fd)
 {
 	char	c;
@@ -58,13 +69,7 @@ static char	*read_line_fd(int fd)
 			break ;
 		line[i++] = c;
 	}
-	line[i] = '\0';
-	if (read_bytes == 0 && i == 0)
-	{
-		free(line);
-		return (NULL);
-	}
-	return (line);
+	return (finish_line(line, read_bytes, i));
 }
 
 char	**read_file(char *filename)
